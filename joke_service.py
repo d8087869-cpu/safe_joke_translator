@@ -52,3 +52,22 @@ def get_safe_joke():
             return joke_data
 
     return None
+
+
+def extract_joke_data(api_data):
+    joke_data = {
+        "joke": api_data["joke"],
+        "category": api_data["category"],
+        "joke_id": api_data["id"],
+        "language": api_data["lang"]
+    }
+
+    return joke_data
+
+
+def analyze_joke(joke):
+    analysis = {
+        "characters": len(joke),
+        "words": len(joke.split())
+    }
+    return analysis
