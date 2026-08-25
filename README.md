@@ -1,0 +1,1 @@
+# safe_joke_translator
