@@ -10,7 +10,7 @@ def choose_language():
     while True:
         print("choose a translation language:")
         print("1. Hebrew")
-        print("2. English")
+        print("2. Spanish")
         print("3. French")
         print("4. Italian")
 
@@ -31,10 +31,19 @@ def main():
     joke_data = get_safe_joke()
 
     if joke_data:
+        joke = extract_joke_data(joke_data)
+        analysis = analyze_joke(joke["joke"])
+
         print("\nSafe programming joke:")
-        print(joke_data["joke"])
-    else:
-        print("Could not get a safe joke.")
+        print(joke["joke"])
+
+        print("\n Joke informtion:")
+        print(f"Category: {joke['category']}")
+        print(f"Joke ID: {joke['joke_id']}")
+        print(f"Language: {joke['language']}")
+        print(f"Words: {analysis['words']}")
+        print(f"Characters: {analysis['characters']}")
+
 
 
 main()
