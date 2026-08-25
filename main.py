@@ -1,4 +1,6 @@
 from joke_service import *
+from translation_service import *
+from bidi.algorithm import get_display
 
 def choose_language():
     language = {
@@ -33,6 +35,14 @@ def main():
     if joke_data:
         joke = extract_joke_data(joke_data)
         analysis = analyze_joke(joke["joke"])
+
+        translation_data = translate_joke(joke["joke"], language)
+        translated_joke = extract_translation(translation_data)
+        print("\n translation response:")
+        print(translation_data)
+
+        print("\nTranslation:")
+        print(get_display(translated_joke))
 
         print("\nSafe programming joke:")
         print(joke["joke"])
